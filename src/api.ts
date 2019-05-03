@@ -11,6 +11,9 @@ export const getMappings = (server: IServer) =>
 export const getMapping = (server: IServer, mappingId: string) =>
     ajax.getJSON(buildApiUrl(server, `/mappings/${mappingId}`))
 
+export const getRequests = (server: IServer) =>
+    ajax.getJSON(buildApiUrl(server, "/requests"));
+
 export const createMapping = (server: IServer, mapping: Partial<IMapping>) =>
     ajax.post(
         buildApiUrl(server, '/mappings'),

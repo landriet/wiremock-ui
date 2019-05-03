@@ -11,6 +11,7 @@ import AppBar from './AppBar'
 import { Container, Inner } from './App_styled'
 import { IApplicationState } from '../../../store'
 import { IData } from '../../../types'
+import {requestsContentTypes} from "../../requests";
 
 const PaneManager = createPaneManager<IApplicationState, IData>({
     namespace: 'default',
@@ -18,6 +19,7 @@ const PaneManager = createPaneManager<IApplicationState, IData>({
         ...settingsContentTypes,
         ...serversContentTypes,
         ...mappingsContentTypes,
+        ...requestsContentTypes,
     ],
 })
 

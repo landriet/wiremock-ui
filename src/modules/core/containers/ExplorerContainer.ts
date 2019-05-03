@@ -1,17 +1,19 @@
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { panesCurrentContentsSelector, uuid } from 'edikit'
-import { ITreeNode } from '../components/Tree'
+import { ITreeNode } from '..'
 import { IApplicationState } from '../../../store'
 import { loadServerMappings, getMappingUrl } from '../../mappings'
 import { IServer } from '../../servers'
 import Explorer from '../components/Explorer'
+import { loadServerRequests } from "../../requests/store";
 
 const mapStateToProps = (
     {
         panes,
         servers: { servers },
-        mappings: serversMappings
+        mappings: serversMappings,
+        requests: serversRequests
     }: IApplicationState
 ): {
     tree: ITreeNode
@@ -75,6 +77,31 @@ const mapStateToProps = (
             serverNode.children.push(mappingsNode)
         }
 
+        if (serversRequests !== undefined) {
+            const requestsNode: ITreeNode = {
+                id: `${server.name}.requests`,
+                type: "requests",
+                label: "Requests",
+                data: {
+                    serverName: server.name
+                },
+                children: []
+            };
+
+            serversRequests.requests.forEach(request => {
+                requestsNode.children!.push({
+                    id: request["id"],
+                    type: "request",
+                    label: `${request["request"]["method"]} ${request["request"]["url"]}`,
+                    data: {
+                        serverName: server.name,
+                        requestId: request["id"],
+                    }
+                });
+            });
+            serverNode.children.push(requestsNode);
+        }
+
         tree.children!.push(serverNode)
     })
 
@@ -91,6 +118,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     loadServerMappings: (server: IServer) => {
         dispatch(loadServerMappings(server))
     },
+    loadServerRequests: (server: IServer) => {
+        dispatch(loadServerRequests(server));
+    }
 })
 
 export default connect(

@@ -11,6 +11,7 @@ export interface IExplorerProps {
     tree: ITreeNode
     servers: IServer[]
     loadServerMappings(server: IServer): void
+    loadServerRequests(server: IServer): void
     addContentToCurrentPane(content: IPaneContent<IData>): void
     theme: ITheme
 }
@@ -48,6 +49,7 @@ class Explorer extends React.Component<IExplorerProps, IExplorerState> {
     handleNodeClick = (node: ITreeNode) => {
         const {
             loadServerMappings,
+            loadServerRequests,
             servers,
             addContentToCurrentPane,
         } = this.props
@@ -79,6 +81,29 @@ class Explorer extends React.Component<IExplorerProps, IExplorerState> {
                     data: {
                         serverName: server.name,
                         mappingId: node.data.mappingId,
+                    },
+                })
+            }
+        }
+
+        if (node.type === 'requests' && node.data !== undefined) {
+            const server = servers.find(s => s.name === node.data!.serverName)
+            if (server !== undefined) {
+                loadServerRequests(server)
+            }
+        }
+
+        if (node.type === 'request' && node.data !== undefined) {
+            const server = servers.find(s => s.name === node.data!.serverName)
+            if (server !== undefined) {
+                addContentToCurrentPane({
+                    id: node.id,
+                    type: 'request',
+                    isCurrent: true,
+                    isUnique: false,
+                    data: {
+                        serverName: server.name,
+                        requestId: node.data.requestId,
                     },
                 })
             }
