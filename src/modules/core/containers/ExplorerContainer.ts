@@ -77,7 +77,8 @@ const mapStateToProps = (
             serverNode.children.push(mappingsNode)
         }
 
-        if (serversRequests !== undefined) {
+        const requests = serversRequests[server.name]
+        if (requests !== undefined) {
             const requestsNode: ITreeNode = {
                 id: `${server.name}.requests`,
                 type: "requests",
@@ -88,14 +89,15 @@ const mapStateToProps = (
                 children: []
             };
 
-            serversRequests.requests.forEach(request => {
+            requests.ids.forEach(requestId => {
+                const request = requests.byId[requestId];
                 requestsNode.children!.push({
-                    id: request["id"],
+                    id: requestId,
                     type: "request",
-                    label: `${request["request"]["method"]} ${request["request"]["url"]}`,
+                    label: `${request.request.method} ${request.request.url}`,
                     data: {
                         serverName: server.name,
-                        requestId: request["id"],
+                        requestId,
                     }
                 });
             });

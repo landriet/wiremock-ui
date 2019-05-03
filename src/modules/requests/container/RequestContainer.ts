@@ -16,11 +16,12 @@ interface IPropsFromState {
 }
 
 const mapStateToProps = (
-  { servers: { servers }, requests: {requests} }: IApplicationState,
+  { servers: { servers }, requests: serversRequests }: IApplicationState,
   { serverName, requestId }: IOwnProps
 ): IPropsFromState => {
   const server = servers.find(s => s.name === serverName);
-  const request = requests.find(value => value['id'] === requestId);
+  const serverRequests = serversRequests[serverName]
+  const request = serverRequests.byId[requestId];
   return {
     server,
     isLoading: false,

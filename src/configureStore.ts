@@ -37,9 +37,24 @@ export default function configureStore(): Store<IApplicationState> {
             },
             {},
         )
+        const requests = servers.servers.reduce(
+            (previousValue: any, currentValue: IServer) => {
+                return {
+                    ...previousValue,
+                    [currentValue.name]: {
+                        isLoading: false,
+                        haveBeenLoaded: false,
+                        ids: [],
+                        byId: {},
+                    },
+                }
+            },
+            {},
+        )
         saveState({
             servers,
             mappings,
+            requests,
         })
     })
 
