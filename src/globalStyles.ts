@@ -24,8 +24,7 @@ html, body, #root {
 }
 
 .Resizer {
-    background: red;
-    opacity: 0;
+    background: lightgrey;
     z-index: 1;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

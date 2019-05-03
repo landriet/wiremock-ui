@@ -26,16 +26,14 @@ export interface ItemProps {
 export const Item = styled.div<ItemProps>`
     display: flex;
     align-items: center;
-    padding: 3px 12px 3px 7px;
     font-size: 13px;
     font-weight: 600;
     transition: background 300ms;
-    padding-left: ${props => {
+    padding: 3px 12px 3px ${props => {
         if (props.isDir) {
-            return props.depth * iconsOffset + 7
+            return props.depth * iconsOffset / 2
         }
-
-        return props.depth * iconsOffset + 7
+        return props.depth * iconsOffset / 2
     }}px;
     cursor: pointer;
     white-space: nowrap;
