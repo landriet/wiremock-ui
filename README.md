@@ -1,14 +1,14 @@
 # WireMock UI
 
-[![wiremock ui license](https://img.shields.io/github/license/plouc/wiremock-ui.svg?longCache=true&style=for-the-badge)](https://github.com/plouc/wiremock-ui/blob/master/LICENSE)
-[![wiremock ui issues](https://img.shields.io/github/issues/plouc/wiremock-ui.svg?longCache=true&style=for-the-badge)](https://github.com/plouc/wiremock-ui/issues)
-[![wiremock ui build status](https://img.shields.io/travis/plouc/wiremock-ui.svg?longCache=true&style=for-the-badge)](https://travis-ci.org/plouc/wiremock-ui)
+[![wiremock ui license](https://img.shields.io/github/license/landriet/wiremock-ui.svg?longCache=true&style=for-the-badge)](https://github.com/landriet/wiremock-ui/blob/master/LICENSE)
+[![wiremock ui issues](https://img.shields.io/github/issues/landriet/wiremock-ui.svg?longCache=true&style=for-the-badge)](https://github.com/landriet/wiremock-ui/issues)
+[![wiremock ui build status](https://img.shields.io/travis/landriet/wiremock-ui.svg?longCache=true&style=for-the-badge)](https://travis-ci.org/landriet/wiremock-ui)
 
 An unofficial UI for [WireMock](http://wiremock.org/).
 
 [Features](#features) | [Project struture](#project-structure)
 
-![UI screenshot](https://raw.githubusercontent.com/plouc/wiremock-ui/master/screenshots/ui_solarized_dark.png)
+![UI screenshot](https://raw.githubusercontent.com/landriet/wiremock-ui/master/screenshots/ui_solarized_dark.png)
 
 ## Features
 
@@ -18,7 +18,7 @@ An unofficial UI for [WireMock](http://wiremock.org/).
 - theming
 - support multiple panes
 
-![UI screenshot](https://raw.githubusercontent.com/plouc/wiremock-ui/master/screenshots/ui_white.png)
+![UI screenshot](https://raw.githubusercontent.com/landriet/wiremock-ui/master/screenshots/ui_white.png)
 
 ## Project structure
 
